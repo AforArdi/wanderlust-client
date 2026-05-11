@@ -3,7 +3,6 @@ import { getDestinations } from "@/lib/data";
 
 const destinations = async () => {
     const destinations = await getDestinations();
-    console.log(destinations);
 
     return ( 
         <div className="max-w-7xl mx-auto my-10">

@@ -16,3 +16,17 @@ export const AddDestinationAction = async (formData) => {
     }
     return data;
 }
+export const DeleteAction = async (id)=>{
+    const res = await fetch(`http://localhost:5000/destinations/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const data = await res.json();
+    // todo redirect
+    if(data.deletedCount>0){
+        redirect('/destinations');
+    }
+    return data;
+}

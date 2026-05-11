@@ -12,7 +12,7 @@ const DestinationCard = ({ destination }) => {
 
     return (
         <div className="">
-            <Card className=" gap-2">
+            <Card>
                 <Image src={imageUrl} alt={destinationName} height={200} width={400}
                     className="object-cover"></Image>
                 <Card.Header>
@@ -31,7 +31,7 @@ const DestinationCard = ({ destination }) => {
                     </div>
                 </Card.Header>
                 <Card.Footer className="flex gap-2">
-                    <Link href={`/destination/${_id}`}>
+                    <Link href={`/destinations/${_id}`}>
                         <Button variant="outline">
                             Book Now<FaArrowUpRightFromSquare></FaArrowUpRightFromSquare>
                         </Button>
