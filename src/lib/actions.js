@@ -10,10 +10,9 @@ export const AddDestinationAction = async (formData) => {
         body: JSON.stringify(newDestination)
     })
     const data = await res.json();
-    console.log(data);
-    // todo revalidate
+
     if (data.insertedId) {
         redirect('/destinations');
     }
-    return data
+    return data;
 }

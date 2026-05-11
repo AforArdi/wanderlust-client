@@ -1,0 +1,82 @@
+[
+  {
+    "destinationName": "Bali Paradise",
+    "country": "Indonesia",
+    "category": "Beach",
+    "price": "350",
+    "duration": "7 days",
+    "departureDate": "2026-06-10",
+    "imageUrl": "https://cdn.pixabay.com/photo/2017/09/05/08/35/beach-2716794_1280.jpg",
+    "description": "Experience the beautiful beaches and vibrant nightlife of Bali."
+  },
+  {
+    "destinationName": "Swiss Alps Escape",
+    "country": "Switzerland",
+    "category": "Mountain",
+    "price": "550",
+    "duration": "8 days",
+    "departureDate": "2026-12-15",
+    "imageUrl": "https://cdn.pixabay.com/photo/2017/11/27/19/53/mountains-2982087_1280.jpg",
+    "description": "Enjoy breathtaking mountain views and winter adventures in Switzerland."
+  },
+  {
+    "destinationName": "Paris Getaway",
+    "country": "France",
+    "category": "City",
+    "price": "450",
+    "duration": "5 days",
+    "departureDate": "2026-09-05",
+    "imageUrl": "https://cdn.pixabay.com/photo/2017/01/03/22/00/tower-1950742_1280.jpg",
+    "description": "Discover the romance, culture, and cuisine of Paris."
+  },
+  {
+    "destinationName": "Maldives Retreat",
+    "country": "Maldives",
+    "category": "Beach",
+    "price": "700",
+    "duration": "6 days",
+    "departureDate": "2026-07-20",
+    "imageUrl": "https://cdn.pixabay.com/photo/2017/02/20/19/29/four-seasons-2083682_1280.jpg",
+    "description": "Relax in luxurious overwater villas surrounded by crystal-clear waters."
+  },
+  {
+    "destinationName": "Tokyo Adventure",
+    "country": "Japan",
+    "category": "City",
+    "price": "600",
+    "duration": "7 days",
+    "departureDate": "2026-04-18",
+    "imageUrl": "https://cdn.pixabay.com/photo/2015/09/09/07/05/japan-931162_1280.jpg",
+    "description": "Explore the modern technology, food, and traditions of Tokyo."
+  },
+  {
+    "destinationName": "Sahara Desert Tour",
+    "country": "Morocco",
+    "category": "Desert",
+    "price": "300",
+    "duration": "4 days",
+    "departureDate": "2026-10-11",
+    "imageUrl": "https://cdn.pixabay.com/photo/2020/03/24/20/42/namibia-4965457_1280.jpg",
+    "description": "Ride camels and camp under the stars in the Sahara Desert."
+  },
+  {
+    "destinationName": "New Zealand Explorer",
+    "country": "New Zealand",
+    "category": "Adventure",
+    "price": "800",
+    "duration": "10 days",
+    "departureDate": "2026-11-03",
+    "imageUrl": "https://cdn.pixabay.com/photo/2022/04/03/12/49/island-7108861_1280.jpg",
+    "description": "Enjoy thrilling outdoor adventures and stunning natural landscapes."
+  },
+  {
+    "destinationName": "Santorini Dreams",
+    "country": "Greece",
+    "category": "Island",
+    "price": "500",
+    "duration": "6 days",
+    "departureDate": "2026-08-14",
+    "imageUrl": "https://cdn.pixabay.com/photo/2023/10/12/14/41/town-8310950_1280.jpg",
+    "description": "Visit the iconic white villages and beautiful sunsets of Santorini."
+  }
+]

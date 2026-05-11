@@ -7,7 +7,7 @@ import { CgProfile } from "react-icons/cg";
 const navLinks = <>
     <li><NavLinks href={'/'}>Home</NavLinks></li>
     <li><NavLinks href={'/destinations'}>Destinations</NavLinks></li>
-    <li><NavLinks href={'/'}>Ny Bookings</NavLinks></li>
+    <li><NavLinks href={'/'}>My Bookings</NavLinks></li>
     <li><NavLinks href={'/'}>Admin</NavLinks></li>
     <li><NavLinks href={'/add-destination'}>Add Destination</NavLinks></li>
 </>
