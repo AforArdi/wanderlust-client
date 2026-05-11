@@ -7,6 +7,7 @@ import Image from "next/image";
 import { CiLocationOn } from "react-icons/ci";
 import { FaRegCalendarAlt, FaLongArrowAltRight } from "react-icons/fa";
 import AlertModal from "@/components/AlertModal";
+import EditModal from "@/components/EditModal";
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -20,7 +21,7 @@ const DestinationDetailsPage = async ({ params }) => {
                     <Button variant="ghost" className={'rounded-none flex items-center gap-2'}><MdOutlineKeyboardArrowLeft></MdOutlineKeyboardArrowLeft> Back to Destinations</Button>
                 </Link>
                 <div className="flex items-center gap-2">
-                    <Button variant="ghost" className={'rounded-none flex items-center gap-2'}><FaRegEdit></FaRegEdit> Edit</Button>
+                    <EditModal destination={destination}></EditModal>
                     <AlertModal destination={destination}></AlertModal>
                 </div>
             </div>
