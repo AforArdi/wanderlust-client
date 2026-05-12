@@ -10,8 +10,10 @@ const EditModal = ({ destination }) => {
     const onSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
-        await UpdateAction(_id, data);
+        const destinationData = Object.fromEntries(formData.entries());
+        // verifying data
+        console.log("Sending this to backend:", destinationData);
+        await UpdateAction(_id, destinationData);
     }
 
     return (
@@ -51,7 +53,7 @@ const EditModal = ({ destination }) => {
                                         {/* Category - Updated Select Component */}
                                         <div>
                                             <Select
-                                                defaultSelectedKeys={category}
+                                                defaultValue={category}
                                                 name="category"
                                                 isRequired
                                                 className="w-full"
@@ -149,7 +151,7 @@ const EditModal = ({ destination }) => {
                                         </div>
                                     </div>
                                     <Modal.Footer>
-                                        <Button type="submit" slot="close">Update</Button>
+                                        <Button type="submit">Update</Button>
                                     </Modal.Footer>
                                 </form>
                             </Surface>

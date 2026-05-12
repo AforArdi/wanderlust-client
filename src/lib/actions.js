@@ -16,7 +16,7 @@ export const AddDestinationAction = async (formData) => {
     }
     return data;
 }
-export const DeleteAction = async (id)=>{
+export const DeleteAction = async (id) => {
     const res = await fetch(`http://localhost:5000/destinations/${id}`, {
         method: 'DELETE',
         headers: {
@@ -25,22 +25,25 @@ export const DeleteAction = async (id)=>{
     })
     const data = await res.json();
 
-    if(data.deletedCount>0){
+    if (data.deletedCount > 0) {
         redirect('/destinations');
     }
     return data;
 }
 
-export const UpdateAction=async(id, formData)=>{
+export const UpdateAction = async (id, destination) => {
     const res = await fetch(`http://localhost:5000/destinations/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(destination)
     })
     const data = await res.json();
-    // todo revalidate
 
-    return data;git 
+    if (data.modifiedCount > 0){
+        redirect(`/destinations/${id}`);
+        alert('Destination updated');
+    }
+    return data;
 }
