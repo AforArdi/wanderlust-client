@@ -1,8 +1,9 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { Button, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { Button, FieldError, Form, Input, Label, TextField, Separator } from "@heroui/react";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 
 const SignInPage = () => {
     const onSubmit = async (e) => {
@@ -25,6 +26,12 @@ const SignInPage = () => {
         }
 
     }
+    const handleContinueGoogle = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    }
+
     return (
         <div className="max-w-7xl mx-auto my-20 space-y-10">
             <div className="text-center">
@@ -55,6 +62,16 @@ const SignInPage = () => {
                     </Button>
                 </div>
             </Form>
+            <div className="flex items-center w-full my-4">
+                <Separator className="flex-1" />
+                <span className="px-3 text-sm text-gray-500 whitespace-nowrap">
+                    Or continue with
+                </span>
+                <Separator className="flex-1" />
+            </div>
+            <Button onClick={handleContinueGoogle} className={'rounded-none w-full bg-cyan-500'} type="submit">
+                <FcGoogle></FcGoogle> Continue with Google
+            </Button>
         </div>
     );
 }

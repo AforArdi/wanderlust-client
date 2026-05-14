@@ -4,10 +4,10 @@ import Link from "next/link";
 import NavLinks from "./NavLinks";
 import Image from "next/image";
 import { Button } from "@heroui/react";
-import { CgProfile } from "react-icons/cg";
 import { authClient } from "@/lib/auth-client";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
+import { Avatar } from "@heroui/react";
 
 const navLinks = <>
     <li><NavLinks href={'/'}>Home</NavLinks></li>
@@ -24,8 +24,9 @@ const Navbar = () => {
         error, //error object
     } = authClient.useSession();
     const user = session?.user;
+    console.log(user);
 
-    const handleSignout=async()=>{
+    const handleSignout = async () => {
         await authClient.signOut();
         toast.success("You've been logged out")
         redirect('/signin');
@@ -41,19 +42,23 @@ const Navbar = () => {
                     src={'/assets/Wanderlast.png'} alt="Wanderlust Logo" height={120} width={120}
                 ></Image>
                 <div className="flex items-center gap-2">
-                    <Link href={'/profile'}>
-                        <Button variant="ghost"><CgProfile></CgProfile> Profile</Button>
-                    </Link>
-
-                    {user ? <Button onClick={handleSignout} className={'rounded-none'} variant="danger">Logout</Button> : 
-                    <>
-                        <Link href={'/signin'}>
-                            <Button variant="ghost">Login</Button>
-                        </Link>
-                        <Link href={'/signup'}>
-                            <Button variant="ghost">Sign Up</Button>
-                        </Link>
-                    </>}
+                    {user ?
+                        <><Avatar>
+                                    <Avatar.Image referrerPolicy="no-referrer" alt={user?.name} src={user?.image} />
+                                    <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                                </Avatar> <Link href={'/profile'}>
+                                    <Button variant="ghost">Profile</Button>
+                                </Link>
+                            <Button onClick={handleSignout} className={'rounded-none'} variant="danger">Logout</Button>
+                        </> :
+                        <>
+                            <Link href={'/signin'}>
+                                <Button variant="ghost">Login</Button>
+                            </Link>
+                            <Link href={'/signup'}>
+                                <Button variant="ghost">Sign Up</Button>
+                            </Link>
+                        </>}
                 </div>
             </nav>
         </div>

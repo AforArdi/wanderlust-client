@@ -1,8 +1,9 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { Button, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
+import { Button, FieldError, Form, Input, Label, Separator, TextField } from "@heroui/react";
 import { redirect } from "next/navigation";
 import toast from "react-hot-toast";
+import { FcGoogle } from "react-icons/fc";
 
 const SignUpPage = () => {
 
@@ -10,7 +11,7 @@ const SignUpPage = () => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData.entries());
-        const {name, imageUrl, email, password} = data;
+        const { name, imageUrl, email, password } = data;
 
         const { data: res, error } = await authClient.signUp.email({
             name,
@@ -19,15 +20,21 @@ const SignUpPage = () => {
             password,
         });
 
-        if(res){
+        if (res) {
             toast.success('Account Created Successfully!');
             redirect('/destinations');
         }
-        if(error){
+        if (error) {
             toast.error(`${error.message}`);
         }
 
     }
+    const handleContinueGoogle = async () => {
+        const data = await authClient.signIn.social({
+            provider: "google",
+        });
+    }
+
     return (
         <div className="max-w-7xl mx-auto my-20 space-y-10">
             <div className="text-center">
@@ -76,6 +83,16 @@ const SignUpPage = () => {
                     </Button>
                 </div>
             </Form>
+            <div className="flex items-center w-full my-4">
+                <Separator className="flex-1" />
+                <span className="px-3 text-sm text-gray-500 whitespace-nowrap">
+                    Or continue with
+                </span>
+                <Separator className="flex-1" />
+            </div>
+            <Button onClick={handleContinueGoogle} className={'rounded-none w-full bg-cyan-500'} type="submit">
+                <FcGoogle></FcGoogle> Continue with Google
+            </Button>
         </div>
     );
 }
