@@ -8,6 +8,7 @@ import { CiLocationOn } from "react-icons/ci";
 import { FaRegCalendarAlt, FaLongArrowAltRight } from "react-icons/fa";
 import AlertModal from "@/components/AlertModal";
 import EditModal from "@/components/EditModal";
+import BookingCard from "@/components/shared/BookingCard";
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -28,26 +29,28 @@ const DestinationDetailsPage = async ({ params }) => {
             <Card>
                 <Image src={imageUrl} alt={destinationName} height={400} width={800}
                     className="object-cover"></Image>
+
                 <Card.Header>
-                    <Card.Title>{destinationName}</Card.Title>
-                    <div className="flex items-center gap-2">
-                        <CiLocationOn></CiLocationOn>
-                        <span>{country}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-2xl font-bold">{destinationName}</h2>
-                        <p><span className="text-xl font-bold">${price}</span>/person</p>
-                    </div>
-                    <div className="flex items-center gap-2">
-                        <FaRegCalendarAlt></FaRegCalendarAlt>
-                        {duration}
+                    <div className="flex justify-between">
+                        <div>
+                            <Card.Title>{destinationName}</Card.Title>
+                            <div className="flex items-center gap-2">
+                                <CiLocationOn></CiLocationOn>
+                                <span>{country}</span>
+                            </div>
+                            <h2 className="text-2xl font-bold">{destinationName}</h2>
+                            <div className="flex items-center gap-2">
+                                <FaRegCalendarAlt></FaRegCalendarAlt>
+                                {duration}
+                            </div>
+                            <h2 className="text-3xl font-bold">Overview</h2>
+                                <p>{description}</p>
+                        </div>
+                        <BookingCard destination={destination}></BookingCard>
                     </div>
                 </Card.Header>
-                <div className="flex flex-col gap-2">
-                    <h2 className="text-3xl font-bold">Overview</h2>
-                    <p>{description}</p>
-                    <Button className={'rounded-none flex items-center gap-2'}>Book Now <FaLongArrowAltRight></FaLongArrowAltRight></Button>
-                </div>
+
+
             </Card>
         </div>
     );

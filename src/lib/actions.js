@@ -41,9 +41,27 @@ export const UpdateAction = async (id, destination) => {
     })
     const data = await res.json();
 
-    if (data.modifiedCount > 0){
+    if (data.modifiedCount > 0) {
         redirect(`/destinations/${id}`);
         alert('Destination updated');
     }
+    return data;
+}
+
+export const getBookings = async (userId) => {
+    const res = await fetch(`http://localhost:5000/bookings/${userId}`);
+    const data = await res.json();
+    return data;
+}
+
+export const AddBookings = async (newBooking) => {
+    const res = await fetch('http://localhost:5000/bookings', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newBooking)
+    })
+    const data = await res.json();
     return data;
 }

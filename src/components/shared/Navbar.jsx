@@ -12,7 +12,7 @@ import { Avatar } from "@heroui/react";
 const navLinks = <>
     <li><NavLinks href={'/'}>Home</NavLinks></li>
     <li><NavLinks href={'/destinations'}>Destinations</NavLinks></li>
-    <li><NavLinks href={'/'}>My Bookings</NavLinks></li>
+    <li><NavLinks href={'/bookings'}>My Bookings</NavLinks></li>
     <li><NavLinks href={'/'}>Admin</NavLinks></li>
     <li><NavLinks href={'/add-destination'}>Add Destination</NavLinks></li>
 </>
@@ -24,7 +24,6 @@ const Navbar = () => {
         error, //error object
     } = authClient.useSession();
     const user = session?.user;
-    console.log(user);
 
     const handleSignout = async () => {
         await authClient.signOut();
