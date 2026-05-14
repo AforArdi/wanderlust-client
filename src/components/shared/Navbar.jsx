@@ -1,8 +1,13 @@
+'use client'
+
 import Link from "next/link";
 import NavLinks from "./NavLinks";
 import Image from "next/image";
 import { Button } from "@heroui/react";
 import { CgProfile } from "react-icons/cg";
+import { authClient } from "@/lib/auth-client";
+import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 
 const navLinks = <>
     <li><NavLinks href={'/'}>Home</NavLinks></li>
@@ -13,27 +18,46 @@ const navLinks = <>
 </>
 
 const Navbar = () => {
-    return ( 
+    const {
+        data: session,
+        isPending, //loading state
+        error, //error object
+    } = authClient.useSession();
+    const user = session?.user;
+
+    const handleSignout=async()=>{
+        await authClient.signOut();
+        toast.success("You've been logged out")
+        redirect('/signin');
+    }
+
+    return (
         <div>
             <nav className="flex items-center justify-between p-4">
                 <ul className="flex items-center gap-4">
                     {navLinks}
                 </ul>
                 <Image
-                src={'/assets/Wanderlast.png'} alt="Wanderlust Logo" height={120} width={120}
+                    src={'/assets/Wanderlast.png'} alt="Wanderlust Logo" height={120} width={120}
                 ></Image>
                 <div className="flex items-center gap-2">
-                    <Button variant="ghost"><CgProfile></CgProfile> Profile</Button>
-                    <Link href={'/signin'}>
-                        <Button variant="ghost">Login</Button>
+                    <Link href={'/profile'}>
+                        <Button variant="ghost"><CgProfile></CgProfile> Profile</Button>
                     </Link>
-                    <Link href={'/signup'}>
-                        <Button variant="ghost">Sign Up</Button>
-                    </Link>
+
+                    {user ? <Button onClick={handleSignout} className={'rounded-none'} variant="danger">Logout</Button> : 
+                    <>
+                        <Link href={'/signin'}>
+                            <Button variant="ghost">Login</Button>
+                        </Link>
+                        <Link href={'/signup'}>
+                            <Button variant="ghost">Sign Up</Button>
+                        </Link>
+                    </>}
                 </div>
             </nav>
         </div>
-     );
+    );
 }
- 
+
 export default Navbar;
