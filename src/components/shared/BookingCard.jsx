@@ -3,6 +3,7 @@ import { AddBookings } from "@/lib/actions";
 import { authClient } from "@/lib/auth-client";
 import { Button, DateField, Label } from "@heroui/react";
 import { Card } from "@heroui/react";
+import { redirect } from "next/dist/server/api-utils";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FaArrowRight } from "react-icons/fa";
@@ -34,6 +35,7 @@ const BookingCard = ({ destination }) => {
         
         if(bookingData.insertedId > 0){
             toast.success('Booking Successful!');
+            redirect('/bookings');
         }
     }
 
