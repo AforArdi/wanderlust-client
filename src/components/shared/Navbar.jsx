@@ -24,8 +24,12 @@ const Navbar = () => {
                 ></Image>
                 <div className="flex items-center gap-2">
                     <Button variant="ghost"><CgProfile></CgProfile> Profile</Button>
-                    <Button variant="ghost">Login</Button>
-                    <Button variant="ghost">Sign Up</Button>
+                    <Link href={'/signin'}>
+                        <Button variant="ghost">Login</Button>
+                    </Link>
+                    <Link href={'/signup'}>
+                        <Button variant="ghost">Sign Up</Button>
+                    </Link>
                 </div>
             </nav>
         </div>
