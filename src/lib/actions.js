@@ -27,10 +27,15 @@ export const AddDestinationAction = async (formData) => {
     return data;
 }
 export const DeleteAction = async (id) => {
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
     const res = await fetch(`http://localhost:5000/destinations/${id}`, {
         method: 'DELETE',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`
         }
     })
     const data = await res.json();
@@ -42,10 +47,15 @@ export const DeleteAction = async (id) => {
 }
 
 export const UpdateAction = async (id, destination) => {
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
     const res = await fetch(`http://localhost:5000/destinations/${id}`, {
         method: 'PATCH',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`
         },
         body: JSON.stringify(destination)
     })
