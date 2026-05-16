@@ -11,7 +11,7 @@ export const AddDestinationAction = async (formData) => {
     })
 
     const newDestination = Object.fromEntries(formData.entries());
-    const res = await fetch('http://localhost:5000/destinations', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const DeleteAction = async (id) => {
         headers: await headers()
     })
 
-    const res = await fetch(`http://localhost:5000/destinations/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export const UpdateAction = async (id, destination) => {
         headers: await headers()
     })
 
-    const res = await fetch(`http://localhost:5000/destinations/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${id}`, {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ export const getBookings = async (userId) => {
     const { token } = await auth.api.getToken({
         headers: await headers()
     })
-    const res = await fetch(`http://localhost:5000/bookings/${userId}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${userId}`, {
         headers: {
             authorization: `Bearer ${token}`
         }
@@ -89,7 +89,7 @@ export const AddBookings = async (newBooking) => {
         headers: await headers()
     })
 
-    const res = await fetch('http://localhost:5000/bookings', {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ export const DeleteBooking = async (id) => {
         headers: await headers()
     })
 
-    const res = await fetch(`http://localhost:5000/bookings/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
