@@ -14,6 +14,7 @@ const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params;
     const destination = await getDestinationById(id);
     const { _id, destinationName, imageUrl, country, price, duration, description } = destination;
+    console.log(imageUrl)
 
     return (
         <div className="max-w-7xl mx-auto mb-20">
