@@ -6,11 +6,16 @@ import { auth } from "./auth";
 import { headers } from "next/headers";
 
 export const AddDestinationAction = async (formData) => {
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
+
     const newDestination = Object.fromEntries(formData.entries());
     const res = await fetch('http://localhost:5000/destinations', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            authorization: `Bearer ${token}`
         },
         body: JSON.stringify(newDestination)
     })
