@@ -1,3 +1,5 @@
+'use server';
+
 import { redirect } from "next/navigation";
 import { authClient } from "./auth-client";
 import { auth } from "./auth";
@@ -67,13 +69,16 @@ export const getBookings = async (userId) => {
 
 export const AddBookings = async (newBooking) => {
     // because this function is called from client component, we need to use authClient to get the token.
-    const { data: tokenData, error } = await authClient.token();
+    // const { data: tokenData, error } = await authClient.token();
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
 
     const res = await fetch('http://localhost:5000/bookings', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            authorization: `Bearer ${tokenData?.token}`
+            authorization: `Bearer ${token}`
         },
         body: JSON.stringify(newBooking)
     })
@@ -82,13 +87,16 @@ export const AddBookings = async (newBooking) => {
 }
 
 export const DeleteBooking = async (id) => {
-    const { data: tokenData, error } = await authClient.token();
+    // const { data: tokenData, error } = await authClient.token();
+    const { token } = await auth.api.getToken({
+        headers: await headers()
+    })
 
     const res = await fetch(`http://localhost:5000/bookings/${id}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',
-            authorization: `Bearer ${tokenData?.token}`
+            authorization: `Bearer ${token}`
         }
     })
     const data = await res.json();
