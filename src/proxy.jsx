@@ -8,6 +8,7 @@ export async function proxy(request) {
         headers: await headers() // you need to pass the headers object.
     });
     const user = session?.user;
+    
     if (!user) {
         return NextResponse.redirect(new URL('/signin', request.url))
     }
