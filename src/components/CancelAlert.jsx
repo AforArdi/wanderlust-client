@@ -1,9 +1,8 @@
 "use client";
-import { DeleteAction, DeleteBooking } from "@/lib/actions";
+import { DeleteBooking } from "@/lib/actions";
 import { AlertDialog, Button } from "@heroui/react";
 import { redirect } from "next/navigation";
 import { IoTrashBin } from "react-icons/io5";
-import { MdDeleteOutline } from "react-icons/md";
 
 const CancelAlert = ({bookingId}) => {
     const handleCancel=async()=>{
